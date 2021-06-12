@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Controle Financeiro - Newtab</title>
+  </head>
+  <body>
+    <header class="header-bg">
+      <div class="header">
+        <div class="header-logo">
+          <img src="src/logo.svg" alt="Logo" />
+          <p>Controle financeiro</p>
+        </div>
+				<div class="header-logo-mobile">
+					<img src="src/logo.svg" alt="Logo" />
+				</div>
+				<div class="header-text-mobile">
+					<p>Controle financeiro</p>
+				</div>
+
+        <nav class="header-menu">
+          <button class="btn-menu">
+            <span id="hamburger"></span>
+          </button>
+          <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Resumo</a></li>
+            <li><a href="#">Configurações</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="control-main">
+      <div class="form-block">
+        <h1>Nova transação</h1>
+        <form action="">
+          <div class="flex-1">
+            <label for="transaction-type">Tipo de transação</label><br />
+            <select id="transaction-type">
+              <option value="">Compra</option>
+            </select>
+          </div>
+          <div class="flex-2">
+            <label for="merchandise-name">Nome da mercadoria</label><br />
+            <input type="text" id="merchandise-name" placeholder="input" />
+          </div>
+          <div class="flex-1">
+            <label for="value-merchandise">Valor</label><br />
+            <input type="text" id="merchandise-name" placeholder="R$ 0,00" />
+          </div>
+        </form>
+				<input type="button" value="Adicionar transação" />
+      </div>
+
+      <aside class="extract-main">
+        <h1>Extrato das transações</h1>
+        <header class="extract-label">
+          <h2>Mercadoria</h2>
+          <h2>Valor</h2>
+        </header>
+        <ul class="extract-list">
+          <li>
+            <div class="extract-desc">
+              <div class="merchandise-block">
+                <p class="extract-status">+</p>
+                <p>Lorem ipsum dolor sit amet consectetur</p>
+              </div>
+              <div class="value-block">
+                <p>R$ 12.999,99</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="extract-desc">
+              <div class="merchandise-block">
+                <p class="extract-status">-</p>
+                <p>Lorem ipsum dolor sit amet consectetur</p>
+              </div>
+              <div class="value-block">
+                <p>R$ 99,99</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="extract-desc">
+              <div class="merchandise-block">
+                <p class="extract-status">+</p>
+                <p>Lorem ipsum dolor sit amet consectetur</p>
+              </div>
+              <div class="value-block">
+                <p>R$ 9,99</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <footer class="extract-total">
+          <div class="merchandise-block">
+            <p>Total</p>
+          </div>
+          <div class="value-block">
+            <p>R$ 12.909,99</p>
+            <span>[LUCRO]</span>
+          </div>
+        </footer>
+      </aside>
+    </section>
+  </body>
+</html>

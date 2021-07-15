@@ -1,0 +1,126 @@
+<html>
+<head>
+</head>
+
+<body>
+    <p>Cadastro</p>​
+    <form id="cadastro" onsubmit="validarCadastro(event)">
+        <label for="nome">Nome:</label>
+        <input type="text" plaindex.htmlceholder="Digite seu nome completo" id="nome" name="nome" />
+        <div id="erro_nome" style="color: red;"></div>
+        ​
+        <label for="valor">Valor:</label>
+        <input placeholder="Valor" name="valor" id="valor"  type="number" />
+        <div id="erro_valor" style="color: red;"></div>    
+        
+        <label for="tipo">Tipo:</label>
+        <select name="tipo" id="tipo">
+            <option value="">PREENCHA UM TIPO</option>
+            <option value="compra">Compra</option>
+            <option value="venda">Venda</option>            
+        </select>
+        <div id="erro_tipo" style="color: red;"></div>    
+        ​               
+        <br/>
+        <input type="submit" value="Submit">
+        
+    </form>
+    <div id="lista">
+    </div>
+
+    <script>
+         var lista = [];
+
+         function validarCadastro(e){
+             console.log("validarCadastro");
+            e.preventDefault()
+
+            var nome = document.getElementById("nome").value;
+            var valor = document.getElementById("valor").value;
+            var tipo = document.getElementById("tipo").value;
+
+            var erro_nome = document.getElementById("erro_nome");
+            erro_nome.innerHTML = "";
+            var erro_valor = document.getElementById("erro_valor");
+            erro_valor.innerHTML = "";
+            var erro_tipo = document.getElementById("erro_tipo");
+            erro_tipo.innerHTML = "";
+
+            var existe_erro = false;
+            
+            if(nome == ""){               
+                existe_erro = true;
+                erro_nome.innerHTML = "PREENCHA O NOME";
+            }
+            
+            if(valor ==""){
+                existe_erro = true;
+                erro_valor.innerHTML = "PREENCHA O VALOR";
+            }
+            
+            if(tipo ==""){
+                existe_erro = true;
+                erro_tipo.innerHTML = "PREENCHA O TIPO";
+            }
+
+            if(!existe_erro){                        
+                if(lista == null){
+                    lista = [];
+                }
+                
+                if(tipo =="compra"){
+                    valor = valor*-1; 
+                }else{
+                    valor = parseFloat(valor); 
+                }
+                lista.push({nome:nome, valor:valor, tipo: tipo})  
+                console.log("lista ", lista);                     
+                localStorage.setItem('lista', JSON.stringify(lista))
+                // listaDados()
+                document.getElementById("nome").value = "";
+                document.getElementById("valor").value = "";
+                document.getElementById("tipo").value = "";
+            }
+            
+            return false;
+            
+         }
+
+         function listaDados() {
+            lista = JSON.parse(localStorage.getItem('lista')) 
+            console.log("LISTA POPULADA ", lista);
+
+            document.getElementById('lista').innerHTML = '';
+
+
+            var total = 0;
+            for (let idx_aln in lista) {
+                console.log("NOME PRODUTO", lista[idx_aln].nome);
+                total += parseFloat(lista[idx_aln].valor);
+                document.getElementById('lista').innerHTML += 
+                `<div>
+                    <h2>` + lista[idx_aln].nome + `</h2>
+                    <span>Valor:` + lista[idx_aln].valor + `</span>
+                    <span>Tipo:` + lista[idx_aln].tipo + `</span>
+                    <button onclick="deletaAluno(`+idx_aln+`)">deletar</button>                    
+                </div>`
+            }
+            console.log("TOTAL ", total);
+            document.getElementById('lista').innerHTML += `
+            <h3>TOTAL: ` + total + `</h3>`;
+            
+
+         }
+
+         function deletaAluno(idx) {
+            if (confirm("Deletar aluno?")) {
+                lista.splice(idx,1)
+                localStorage.setItem('lista', JSON.stringify(lista))
+                listaDados()
+            }
+        }
+
+         listaDados();
+    </script>
+</body>
+</html>

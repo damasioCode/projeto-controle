@@ -169,7 +169,7 @@ function create(){
             records: [
                 {
                     fields: {
-                        Aluno: '9940',
+                        Aluno: '3842',
                         Json: transacaoJson
                     }
                 }
@@ -235,7 +235,7 @@ var idAluno = ''
 function getId(){
     let i = 0;
     for(; i < resultJson.records.length; i++){
-        if(resultJson.records[i].fields.Aluno == "9940"){
+        if(resultJson.records[i].fields.Aluno == "3842"){
             idAluno = resultJson.records[i].id
         }
     }
@@ -246,7 +246,7 @@ var verification = true;
 function trueOrFalse(){
     let i = 0
     for(; i < resultJson.records.length; i++){
-        if(resultJson.records[i].fields.Aluno == "9940"){
+        if(resultJson.records[i].fields.Aluno == "3842"){
             verification = true;
         } else {
             verification = false;
